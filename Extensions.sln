@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# 
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaml", "Configuration\Yaml\Yaml.csproj", "{7403ABFC-1D52-4053-BEF7-086DA30B20BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{48FBACD3-2B25-470E-99EE-362761CAE249}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0F1A9E3E-4D21-4423-829A-B0A07E500971}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{87CF5BDD-09CD-4D19-ADC4-43A06045EE89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaml", "Tests\Configuration\Yaml\Yaml.csproj", "{68B52B97-7495-4CBB-B413-522621608438}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7403ABFC-1D52-4053-BEF7-086DA30B20BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7403ABFC-1D52-4053-BEF7-086DA30B20BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7403ABFC-1D52-4053-BEF7-086DA30B20BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7403ABFC-1D52-4053-BEF7-086DA30B20BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B52B97-7495-4CBB-B413-522621608438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B52B97-7495-4CBB-B413-522621608438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B52B97-7495-4CBB-B413-522621608438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B52B97-7495-4CBB-B413-522621608438}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7403ABFC-1D52-4053-BEF7-086DA30B20BC} = {48FBACD3-2B25-470E-99EE-362761CAE249}
+		{87CF5BDD-09CD-4D19-ADC4-43A06045EE89} = {0F1A9E3E-4D21-4423-829A-B0A07E500971}
+		{68B52B97-7495-4CBB-B413-522621608438} = {87CF5BDD-09CD-4D19-ADC4-43A06045EE89}
+	EndGlobalSection
+EndGlobal
