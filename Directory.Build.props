@@ -14,7 +14,7 @@
     
     <PropertyGroup>
         <Authors>Sam Howes</Authors>
-        <Version>0.0.1</Version>
+        <Version>0.0.2</Version>
         <RepositoryUrl>https://github.com/samhowes/SamHowes.Extensions</RepositoryUrl>
     </PropertyGroup>
 
