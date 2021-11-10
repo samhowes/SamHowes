@@ -1,0 +1,19 @@
+load("@rules_msbuild//dotnet:defs.bzl", "msbuild_test")
+
+msbuild_test(
+    name = "Yaml",
+    srcs = ["YamlConfigurationParserTests.cs"],
+    target_framework = "net5.0",
+    deps = [
+        "//Configuration/Yaml",
+        "@nuget//Microsoft.Extensions.Configuration.Binder",
+        "@nuget//Microsoft.NET.Test.Sdk",
+        # gazelle-err: unsupported element: IncludeAssets
+        # gazelle-err: unsupported element: PrivateAssets
+        "@nuget//coverlet.collector",
+        "@nuget//xunit",
+        # gazelle-err: unsupported element: IncludeAssets
+        # gazelle-err: unsupported element: PrivateAssets
+        "@nuget//xunit.runner.visualstudio",
+    ],
+)

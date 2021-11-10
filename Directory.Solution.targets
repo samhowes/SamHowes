@@ -1,0 +1,10 @@
+<Project>
+    <!--  bzl:generated start  -->
+    <Import Project="Directory.Build.targets"/>
+
+    <Target Condition="'$(UseBazel)' == 'true'" Name="BazelClean"
+        AfterTargets="Clean">
+        <Exec Command="bazel clean" />
+    </Target>
+    <!--  bzl:generated end  -->
+</Project>

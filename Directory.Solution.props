@@ -1,0 +1,8 @@
+<Project>
+    <!--  bzl:generated start  -->
+    <PropertyGroup>
+        <BazelProjectUseSolutionItems>true</BazelProjectUseSolutionItems>
+    </PropertyGroup>
+    <Import Project="Directory.Build.props" />
+    <!--  bzl:generated end  -->
+</Project>

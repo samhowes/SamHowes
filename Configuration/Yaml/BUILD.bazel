@@ -1,0 +1,19 @@
+load("@rules_msbuild//dotnet:defs.bzl", "msbuild_library")
+
+msbuild_library(
+    name = "Yaml",
+    srcs = [
+        "YamlConfigurationExtensions.cs",
+        "YamlConfigurationFileParser.cs",
+        "YamlConfigurationProvider.cs",
+        "YamlConfigurationSource.cs",
+        "YamlStreamConfigurationProvider.cs",
+        "YamlStreamConfigurationSource.cs",
+    ],
+    target_framework = "net5.0",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@nuget//Microsoft.Extensions.Configuration.FileExtensions",
+        "@nuget//YamlDotNet",
+    ],
+)
