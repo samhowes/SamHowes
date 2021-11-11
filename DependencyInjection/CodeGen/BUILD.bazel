@@ -1,0 +1,14 @@
+load("@rules_msbuild//dotnet:defs.bzl", "msbuild_binary")
+
+msbuild_binary(
+    name = "CodeGen",
+    srcs = ["Program.cs"],
+    target_framework = "net5.0",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@nuget//Humanizer.Core",
+        "@nuget//Microsoft.CodeAnalysis.CSharp",
+        "@nuget//Microsoft.CodeAnalysis.CSharp.Workspaces",
+        "@nuget//Microsoft.CodeAnalysis.Workspaces.Common",
+    ],
+)

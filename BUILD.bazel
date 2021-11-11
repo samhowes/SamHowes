@@ -12,7 +12,9 @@ msbuild_directory(
         "Directory.Solution.props",
         "Directory.Solution.targets",
     ],
-    visibility = ["//:public"],
+    assembly_name_prefix = "SamHowes.Extensions",
+    use_bazel_package_for_assembly_name = True,
+    visibility = ["//visibility:public"],
 )
 
 gazelle(

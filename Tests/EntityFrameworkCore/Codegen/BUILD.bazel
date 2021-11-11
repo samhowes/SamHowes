@@ -1,13 +1,11 @@
 load("@rules_msbuild//dotnet:defs.bzl", "msbuild_test")
 
 msbuild_test(
-    name = "Yaml",
-    srcs = ["YamlConfigurationParserTests.cs"],
+    name = "Codegen",
+    srcs = ["GeneratorTests.cs"],
     target_framework = "net5.0",
     deps = [
-        "//Configuration/Yaml",
-        "@nuget//FluentAssertions",
-        "@nuget//Microsoft.Extensions.Configuration.Binder",
+        "//EntityFrameworkCore/Codegen",
         "@nuget//Microsoft.NET.Test.Sdk",
         # gazelle-err: unsupported element: IncludeAssets
         # gazelle-err: unsupported element: PrivateAssets
