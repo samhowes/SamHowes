@@ -11,6 +11,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Editing;
 using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.CodeAnalysis.Text;
+using RulesMSBuild.Tools.Bazel;
 
 namespace SamHowes.Extensions.DependencyInjection.CodeGen
 {
@@ -18,8 +19,11 @@ namespace SamHowes.Extensions.DependencyInjection.CodeGen
     {
         static async Task Main(string[] args)
         {
-            var generator = new Generator(new Editor(), "SamHowes.Extensions.DependencyInjection.IO",
-                Directory.GetCurrentDirectory());
+            var root = BazelEnvironment.TryGetWorkspaceRoot() ?? Directory.GetCurrentDirectory();
+            var package = "DependencyInjection.IO";
+            var outputDirectory = Path.Combine(root, package.Replace('.', Path.DirectorySeparatorChar));
+            var generator = new Generator(new Editor(), "SamHowes.Extensions." + package,
+                outputDirectory);
             foreach (var type in new[] {typeof(File)})
             {
                 await generator.Generate(type);
@@ -120,7 +124,7 @@ namespace SamHowes.Extensions.DependencyInjection.CodeGen
 
             document.ReplaceNode(document.OriginalRoot, root);
             var text = await _editor.GetTextAsync(document);
-            await File.WriteAllTextAsync("Files.cs", text);
+            await File.WriteAllTextAsync(Path.Combine(_outputDirectory, $"{name}.cs"), text);
         }
 
         private string TypeString(Type type)

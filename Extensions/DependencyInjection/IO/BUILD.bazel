@@ -2,7 +2,7 @@ load("@rules_msbuild//dotnet:defs.bzl", "msbuild_library")
 
 msbuild_library(
     name = "IO",
-    srcs = ["Class1.cs"],
+    srcs = ["foo.cs"],
     target_framework = "net5.0",
     visibility = ["//visibility:public"],
 )

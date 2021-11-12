@@ -10,5 +10,6 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.10.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.10.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.10.0"/>
+        <PackageReference Include="RulesMSBuild.Runfiles"/>
     </ItemGroup>
 </Project>

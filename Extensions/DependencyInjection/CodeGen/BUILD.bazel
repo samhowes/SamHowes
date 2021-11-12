@@ -10,5 +10,6 @@ msbuild_binary(
         "@nuget//Microsoft.CodeAnalysis.CSharp",
         "@nuget//Microsoft.CodeAnalysis.CSharp.Workspaces",
         "@nuget//Microsoft.CodeAnalysis.Workspaces.Common",
+        "@nuget//RulesMSBuild.Runfiles",
     ],
 )

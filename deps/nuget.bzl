@@ -14,6 +14,7 @@ def nuget_deps():
             "Microsoft.Extensions.Configuration.FileExtensions/5.0.0": ["net5.0"],
             "Microsoft.NET.Test.Sdk/16.7.1": ["net5.0"],
             "Microsoft.SqlServer.DacFx/150.5290.2-preview": ["net5.0"],
+            "RulesMSBuild.Runfiles/": ["net5.0"],
             "YamlDotNet/11.2.1": ["net5.0"],
             "coverlet.collector/1.3.0": ["net5.0"],
             "xunit.runner.visualstudio/2.4.3": ["net5.0"],
