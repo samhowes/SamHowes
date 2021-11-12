@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\EntityFrameworkCore\Codegen\Codegen.csproj" />
+    <ProjectReference Include="..\..\..\..\Extensions\EntityFrameworkCore\Codegen\Codegen.csproj" />
   </ItemGroup>
 
 </Project>

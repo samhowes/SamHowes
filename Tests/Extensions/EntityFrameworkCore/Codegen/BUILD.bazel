@@ -5,7 +5,7 @@ msbuild_test(
     srcs = ["GeneratorTests.cs"],
     target_framework = "net5.0",
     deps = [
-        "//EntityFrameworkCore/Codegen",
+        "//Extensions/EntityFrameworkCore/Codegen",
         "@nuget//Microsoft.NET.Test.Sdk",
         # gazelle-err: unsupported element: IncludeAssets
         # gazelle-err: unsupported element: PrivateAssets

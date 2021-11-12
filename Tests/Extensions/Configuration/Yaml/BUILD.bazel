@@ -5,7 +5,7 @@ msbuild_test(
     srcs = ["YamlConfigurationParserTests.cs"],
     target_framework = "net5.0",
     deps = [
-        "//Configuration/Yaml",
+        "//Extensions/Configuration/Yaml",
         "@nuget//FluentAssertions",
         "@nuget//Microsoft.Extensions.Configuration.Binder",
         "@nuget//Microsoft.NET.Test.Sdk",

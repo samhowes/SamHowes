@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Configuration\Yaml\Yaml.csproj"/>
+        <ProjectReference Include="..\..\..\..\Extensions\Configuration\Yaml\Yaml.csproj"/>
     </ItemGroup>
 
 </Project>
