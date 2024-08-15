@@ -2,6 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <PackageId>SamHowes.Extensions.Configuration.Yaml</PackageId>
+        <Version>0.0.3</Version>
+        <Authors>Sam Howes</Authors>
     </PropertyGroup>
 
     <ItemGroup>

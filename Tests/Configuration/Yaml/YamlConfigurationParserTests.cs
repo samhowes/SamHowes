@@ -33,12 +33,24 @@ foo:
         [Fact]
         public void Parse_Works()
         {
-            
             var result = Parse(BasicYaml);
             result.Should().Equal(
                 new KeyValuePair<string, string>("foo:bar", "bam"),
                 new KeyValuePair<string, string>("foo:what:0", "first"),
                 new KeyValuePair<string, string>("foo:what:1", "second")
+            );
+        } 
+        
+        [Fact]
+        public void DashCase_Works()
+        {
+            var result = Parse(@"
+foo-bar: bam
+foo-bam: bar
+");
+            result.Should().Equal(
+                new KeyValuePair<string, string>("fooBam", "bar"),
+                new KeyValuePair<string, string>("fooBar", "bam")
             );
         }
 

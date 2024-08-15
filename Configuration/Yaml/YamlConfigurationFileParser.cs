@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.Configuration;
 using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace SamHowes.Extensions.Configuration.Yaml
 {
@@ -11,6 +13,7 @@ namespace SamHowes.Extensions.Configuration.Yaml
     {
         private readonly IDictionary<string, string> _data = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly Stack<string> _path = new();
+        private readonly Regex _caseRegex = new Regex(@"-\w");
         public static IDictionary<string, string> Parse(Stream input)
             => new YamlConfigurationFileParser().ParseStream(input);
 
@@ -30,7 +33,10 @@ namespace SamHowes.Extensions.Configuration.Yaml
                 case Dictionary<object, object> dict:
                     foreach (var (key, value) in dict)
                     {
-                        _path.Push(key as string);
+                        var str = _caseRegex.Replace((key as string)!, (match) => 
+                            match.Value[1].ToString().ToUpper());
+                        
+                        _path.Push(str);
                         Flatten(value);
                         _path.Pop();
                     }
