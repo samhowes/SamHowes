@@ -5,7 +5,7 @@ namespace SamHowes.Extensions.DependencyInjection.Modules;
 
 public class InjectorBuilder(IServiceCollection services, ConfigurationManager configuration)
 {
-    private readonly List<InjectionModule> _modules = new List<InjectionModule>();
+    private readonly List<InjectionModule> _modules = [];
     public InjectorBuilder() : this(new ServiceCollection(), new ConfigurationManager()) {}
     
     public IServiceCollection Services { get; } = services;
@@ -14,6 +14,15 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
     public InjectorBuilder AddModule(InjectionModule module)
     {
         _modules.Add(module);
+        return this;
+    }
+    
+    /// <summary>
+    /// A proxy for <see cref="IServiceCollection.AddScoped"/>
+    /// </summary>
+    public InjectorBuilder Add<T>() where T : class
+    {
+        Services.AddScoped<T>();
         return this;
     }
 
