@@ -4,9 +4,13 @@ set -euo pipefail
 project=$1
 dot_notation=$(echo "$project" | tr / .)
 package_name="SamHowes.Extensions.$dot_notation"
-package_path="$project/bin/Release/$package_name"
+bin_folder="$project/bin/Release"
+package_path="$bin_folder/$package_name"
 
 api_key=$(cat ~/.samhowes/api_keys/nuget)
+
+echo "=== Deleted previous packages ==="
+rm -rf "$bin_folder"
 
 echo "==== Packing $project =============================================================="
 dotnet pack $project

@@ -16,3 +16,16 @@ IConfiguration configuration = new ConfigurationBuilder()
     .AddYamlFile("config.yaml")
     .Build();
 ```
+
+### SamHowes.Extensions.DependencyInjection.Modules
+
+Simple modules to encapsulate your `IServiceCollection` configurations
+```csharp
+var injector = new InjectorBuilder()
+    .AddModule(new MyModule())
+    .AddModule(new DatabaseModule())
+    .Build();
+
+var service = injector.Get<MyDbContext>();
+
+```
