@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-#
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaml", "Configuration\Yaml\Yaml.csproj", "{7403ABFC-1D52-4053-BEF7-086DA30B20BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{48FBACD3-2B25-470E-99EE-362761CAE249}"
@@ -18,6 +18,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInjection", "DependencyInjection", "{1301DF24-DDB0-41C5-81B1-CE30295B48CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules", "Tests\DependencyInjection\Modules\Modules.csproj", "{0D3D0FB7-1CD8-4E75-80C1-D4E051EEB441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Tests\Collections\Collections.csproj", "{3AA12518-FEEF-4500-8D28-833BB2F7284F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{98E39D6E-062C-4CCD-A043-648D06EE8C08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,14 @@ Global
 		{0D3D0FB7-1CD8-4E75-80C1-D4E051EEB441}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D3D0FB7-1CD8-4E75-80C1-D4E051EEB441}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D3D0FB7-1CD8-4E75-80C1-D4E051EEB441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA12518-FEEF-4500-8D28-833BB2F7284F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA12518-FEEF-4500-8D28-833BB2F7284F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA12518-FEEF-4500-8D28-833BB2F7284F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA12518-FEEF-4500-8D28-833BB2F7284F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E39D6E-062C-4CCD-A043-648D06EE8C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E39D6E-062C-4CCD-A043-648D06EE8C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E39D6E-062C-4CCD-A043-648D06EE8C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E39D6E-062C-4CCD-A043-648D06EE8C08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7403ABFC-1D52-4053-BEF7-086DA30B20BC} = {48FBACD3-2B25-470E-99EE-362761CAE249}
@@ -49,5 +61,6 @@ Global
 		{CE9D5210-A2F0-4BB4-9461-0653B5CF0D89} = {E5CC2D8B-C3C8-437E-AB43-D9B5611F9289}
 		{1301DF24-DDB0-41C5-81B1-CE30295B48CC} = {0F1A9E3E-4D21-4423-829A-B0A07E500971}
 		{0D3D0FB7-1CD8-4E75-80C1-D4E051EEB441} = {1301DF24-DDB0-41C5-81B1-CE30295B48CC}
+		{3AA12518-FEEF-4500-8D28-833BB2F7284F} = {0F1A9E3E-4D21-4423-829A-B0A07E500971}
 	EndGlobalSection
 EndGlobal
