@@ -1,4 +1,5 @@
 ﻿ <wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ALinkedList_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FSourcesCache_003F74b2ad5ea433da71a378b52e2fe95faf8d8772e48485484656e951f5625678_003FLinkedList_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d6b973c2_002Dcc32_002D4bbe_002Db443_002D16aa27829453/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Parse_Works" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
     &lt;ProjectFile&gt;68B52B97-7495-4CBB-B413-522621608438/f:YamlConfigurationParserTests.cs&lt;/ProjectFile&gt;
@@ -6,6 +7,7 @@
       &lt;TestId&gt;xUnit::0D3D0FB7-1CD8-4E75-80C1-D4E051EEB441::net8.0::SamHowes.Extensions.Tests.DependencyInjection.Modules.InjectionModuleTest&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::3AA12518-FEEF-4500-8D28-833BB2F7284F::net8.0::SamHowes.Extensions.Tests.Collections.HeapTest.It_Works&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::3AA12518-FEEF-4500-8D28-833BB2F7284F::net8.0::SamHowes.Extensions.Tests.Collections.HeapTest&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::3AA12518-FEEF-4500-8D28-833BB2F7284F::net8.0::SamHowes.Extensions.Tests.Collections.OrderedSetTest.It_Works&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
   &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
