@@ -6,21 +6,21 @@ namespace SamHowes.Extensions.Collections;
 public abstract class Heap<T>(Func<T, T, int> compare)
 {
     private readonly List<T> _items = [];
-    private int _size = 0;
-
+    public int Size { get; private set; } = 0;
+    
     public void Push(T item)
     {
-        _size++;
-        if (_size > _items.Count)
+        Size++;
+        if (Size > _items.Count)
         {
             _items.Add(item);
         }
         else
         {
-            _items[_size - 1] = item;
+            _items[Size - 1] = item;
         }
 
-        BubbleUp(_size - 1);
+        BubbleUp(Size - 1);
     }
 
     public T Pop()
@@ -28,8 +28,8 @@ public abstract class Heap<T>(Func<T, T, int> compare)
         var item = _items[0];
 
         // move the lowest item to the top
-        Swap(0, _size - 1);
-        _size--;
+        Swap(0, Size - 1);
+        Size--;
         
         // sink it down to its correct place
         Heapify(0);
@@ -43,15 +43,15 @@ public abstract class Heap<T>(Func<T, T, int> compare)
     private void Heapify(int index)
     {
         var cur = index;
-        while (cur < _size - 1)
+        while (cur < Size - 1)
         {
             var left = Left(cur);
             var right = Right(cur);
             var nextParent = cur;
 
-            if (left < _size && ShouldPushUp(left, nextParent))
+            if (left < Size && ShouldPushUp(left, nextParent))
                 nextParent = left;
-            if (right < _size && ShouldPushUp(right, nextParent))
+            if (right < Size && ShouldPushUp(right, nextParent))
                 nextParent = right;
 
             if (nextParent == cur)

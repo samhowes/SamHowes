@@ -2,7 +2,9 @@ using System.Collections;
 
 namespace SamHowes.Extensions.Collections;
 
-// https://stackoverflow.com/a/17853085/2524934
+/// <summary>
+/// https://stackoverflow.com/a/17853085/2524934
+/// </summary>
 public class OrderedSet<T> : ICollection<T> where T : notnull
 {
     private readonly IDictionary<T, LinkedListNode<T>> _dict;
@@ -52,7 +54,7 @@ public class OrderedSet<T> : ICollection<T> where T : notnull
         return true;
     }
 
-    public bool TryPop(out T item)
+    public bool TryPopFirst(out T item)
     {
         if (_linkedList.Count == 0)
         {
@@ -61,7 +63,15 @@ public class OrderedSet<T> : ICollection<T> where T : notnull
         }
         item = _linkedList.First!.Value;
         _linkedList.RemoveFirst();
+        _dict.Remove(item);
         return true;
+    }
+
+    public T PopFirst()
+    {
+        if (!TryPopFirst(out var item))
+            throw new Exception("Cannot pop from an empty set.");
+        return item;
     }
 
     public IEnumerator<T> GetEnumerator()

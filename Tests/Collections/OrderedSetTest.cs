@@ -14,13 +14,13 @@ public class OrderedSetTest
         set.Add(2);
         set.Add(1);
 
-        set.TryPop(out var result);
+        set.TryPopFirst(out var result);
         result.Should().Be(3);
         
-        set.TryPop(out result);
+        set.TryPopFirst(out result);
         result.Should().Be(2);
         
-        set.TryPop(out result);
+        set.TryPopFirst(out result);
         result.Should().Be(1);
     }
 }
