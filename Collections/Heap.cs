@@ -7,6 +7,8 @@ public abstract class Heap<T>(Func<T, T, int> compare)
 {
     private readonly List<T> _items = [];
     public int Size { get; private set; } = 0;
+
+    public T? Peek() => Size > 0 ? _items[0] : default;
     
     public void Push(T item)
     {
@@ -25,6 +27,9 @@ public abstract class Heap<T>(Func<T, T, int> compare)
 
     public T Pop()
     {
+        if (Size <= 0) 
+            throw new InvalidOperationException("Cannot pop from an empty heap.");
+        
         var item = _items[0];
 
         // move the lowest item to the top

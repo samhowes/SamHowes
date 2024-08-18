@@ -10,7 +10,7 @@ public class HeapTest
     [Fact]
     public void MaxHeap_Works()
     {
-        var heap = new MaxHeap<Item>((a, b) => a.Value - b.Value);
+        var heap = MaxHeap();
 
         heap.Push(new Item(5));
         heap.Size.Should().Be(1);
@@ -32,6 +32,28 @@ public class HeapTest
         item = heap.Pop();
         heap.Size.Should().Be(0);
         item.Value.Should().Be(1);
+    }
+
+    private MaxHeap<Item> MaxHeap()
+    {
+        return new MaxHeap<Item>((a, b) => a.Value - b.Value);
+    }
+
+    [Fact]
+    public void Peek_Works()
+    {
+        var heap = MaxHeap();
+        
+        var badPeek = heap.Peek();
+        badPeek.Should().BeNull();
+        
+        heap.Push(new Item(5));
+        var peek = heap.Peek();
+        peek!.Value.Should().Be(5);
+        heap.Pop();
+
+        badPeek = heap.Peek();
+        badPeek.Should().BeNull();
     }
     
     [Fact]

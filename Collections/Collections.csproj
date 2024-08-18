@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>SamHowes.Extensions.Collections</PackageId>
-    <Version>0.0.6</Version>
+    <Version>0.0.9</Version>
     <Authors>Sam Howes</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
