@@ -5,7 +5,7 @@ namespace SamHowes.Extensions.DependencyInjection.Modules;
 
 public class Injector(IServiceProvider provider, IConfigurationRoot configuration)
 {
-    public class InjectorScope(Injector injector, IServiceScope innerScope) : IDisposable
+    public class InjectorScope(Injector injector, IServiceScope innerScope) : IDisposable, IAsyncDisposable
     {
         private static int _scopeNumber = 0;
         
@@ -15,6 +15,14 @@ public class Injector(IServiceProvider provider, IConfigurationRoot configuratio
         {
             innerScope.Dispose();
             injector.PopScope(this);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (innerScope is IAsyncDisposable innerScopeAsyncDisposable)
+                await innerScopeAsyncDisposable.DisposeAsync();
+            else
+                innerScope.Dispose();
         }
     }
 
