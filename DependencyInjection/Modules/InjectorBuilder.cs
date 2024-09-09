@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SamHowes.Extensions.Configuration.Yaml;
 
 namespace SamHowes.Extensions.DependencyInjection.Modules;
 
@@ -11,6 +12,16 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
     public IServiceCollection Services { get; } = services;
     public IConfigurationManager Configuration { get; } = configuration;
 
+    public InjectorBuilder AddModules(params InjectionModule[] modules)
+    {
+        foreach (var module in modules)
+        {
+            AddModule(module);
+        }
+
+        return this;
+    }
+    
     public InjectorBuilder AddModule(InjectionModule module)
     {
         _modules.Add(module);
@@ -28,6 +39,28 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
 
     public Injector Build()
     {
+        var basePath = Path.GetDirectoryName(typeof(InjectorBuilder).Assembly.Location)!;
+        foreach (var module in _modules)
+        {
+            foreach (var filename in module.ConfigurationFiles)
+            {
+                var path = Path.Combine(basePath, filename);
+                switch (Path.GetExtension(path))
+                {
+                    case ".json":
+                        Configuration.AddJsonFile(path);
+                        break;
+                    case ".yaml":
+                    case ".yml":
+                        Configuration.AddYamlFile(path);
+                        break;
+                    default:
+                        throw new Exception($"Unsupported configuration file extension: {Path.GetExtension(path)}");
+                }
+            }
+            module.PreConfigure(this);
+        }
+        
         foreach (var module in _modules)
         {
             module.Configure(this);

@@ -1,16 +1,27 @@
 # SamHowes.Extensions.DependencyInjection.Modules
 
-Simple modules to encapsulate your `IServiceCollection` configurations
+Simple modules to encapsulate your `IServiceCollection` and `IConfiguration` configurations
 
 ```csharp
-public class Service {}
-
 // Declare your configuration in focused modules
+public class LocalConfigurationModule : InjectionModule
+{
+    public override void PreConfigure(InjectorBuilder builder)
+    {
+        builder.Configuration["ConnectionString"] = "Server=(localdb)\\MsSqlLocalDb";        
+    }
+    
+    public override void Configure(InjectorBuilder builder) {}    
+}
+
 public class MyModule : InjectionModule
 {
+    public override IEnumerable<string> ConfigurationFiles { get; } = new [] { "ServiceConfig.yaml" };
+    
     public override void Configure(InjectorBuilder builder)
     {
         builder.Services.AddScoped<Service>();
+        builder.Services.Add(builder.Configuration.GetSection("Service").Get<ServiceConfig>();
     }
 }
 
@@ -18,7 +29,23 @@ public class DatabaseModule : InjectionModule
 {
     public override void Configure(InjectorBuilder builder)
     {
-        builder.Services.AddDbContext<MyDbContext>();
+        var connectionString = builder.Configuration.GetSection("ConnectionString").Value;
+        // connectionString will be the Prod connection string because PreConfigure is called in module order before 
+        // Configure is called
+        builder.Services.AddDbContext<MyDbContext>(options => 
+            options.UseSqlServer(connectionString));
+    }
+}
+
+public class ProdConfigurationModule : InjectionModule
+{
+    public override void PreConfigure(InjectorBuilder builder)
+    {
+        builder.Configuration["ConnectionString"] = "Server=ProdServer.mydomain.com";
+    }
+
+    public override void Configure(InjectorBuilder builder)
+    {
     }
 }
 
