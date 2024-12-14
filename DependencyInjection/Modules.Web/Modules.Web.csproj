@@ -10,7 +10,7 @@
 
   <PropertyGroup>
     <PackageId>SamHowes.Extensions.DependencyInjection.Modules.Web</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.7</Version>
     <Authors>Sam Howes</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

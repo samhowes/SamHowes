@@ -12,6 +12,11 @@ public class WebInjectorBuilder(WebApplicationBuilder builder)
         return _injectorBuilder.AddModule(module);
     }
 
+    public InjectorBuilder AddModules(params InjectionModule[] modules)
+    {
+        return _injectorBuilder.AddModules(modules);
+    }
+
     public InjectorBuilder Add<T>() where T : class
     {
         return _injectorBuilder.Add<T>();

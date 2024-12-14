@@ -1,10 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SamHowes.Extensions.Configuration.Yaml;
 
 namespace SamHowes.Extensions.DependencyInjection.Modules;
 
 public class InjectorBuilder(IServiceCollection services, ConfigurationManager configuration)
+    : IInjectorBuilder<Injector>
 {
     private readonly List<InjectionModule> _modules = [];
     public InjectorBuilder() : this(new ServiceCollection(), new ConfigurationManager()) {}
@@ -39,6 +43,18 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
 
     public Injector Build()
     {
+        ApplyModules();
+        
+        Services.AddSingleton<Injector>();
+        
+        var provider = Services.BuildServiceProvider();
+        var configuration = Configuration.Build();
+        
+        return new Injector(provider, configuration);
+    }
+
+    public void ApplyModules()
+    {
         var basePath = Path.GetDirectoryName(typeof(InjectorBuilder).Assembly.Location)!;
         foreach (var module in _modules)
         {
@@ -65,10 +81,5 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
         {
             module.Configure(this);
         }
-        
-        var provider = Services.BuildServiceProvider();
-        var configuration = Configuration.Build();
-        
-        return new Injector(provider, configuration);
     }
 }
