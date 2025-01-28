@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SamHowes.Extensions.Configuration.Yaml;
@@ -44,19 +45,24 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
     public Injector Build()
     {
         ApplyModules();
-        
-        Services.AddSingleton<Injector>();
+
+        Injector? injector = null;
+        // ReSharper disable once AccessToModifiedClosure
+        Services.Add(new ServiceDescriptor(typeof(Injector), () => injector!, ServiceLifetime.Singleton));
         
         var provider = Services.BuildServiceProvider();
         var configuration = Configuration.Build();
         
-        return new Injector(provider, configuration);
+        injector = new Injector(provider, configuration);
+        return injector;
     }
 
     public void ApplyModules()
     {
+        var modules = new DepSet(_modules).Enumerate();
+        
         var basePath = Path.GetDirectoryName(typeof(InjectorBuilder).Assembly.Location)!;
-        foreach (var module in _modules)
+        foreach (var module in modules)
         {
             foreach (var filename in module.ConfigurationFiles)
             {
@@ -77,7 +83,7 @@ public class InjectorBuilder(IServiceCollection services, ConfigurationManager c
             module.PreConfigure(this);
         }
         
-        foreach (var module in _modules)
+        foreach (var module in modules)
         {
             module.Configure(this);
         }

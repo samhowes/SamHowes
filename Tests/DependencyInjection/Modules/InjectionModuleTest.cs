@@ -12,18 +12,6 @@ public class TestConfiguration
     public int? ConfigurationProperty { get; set; }
 }
 
-public class TestModule : InjectionModule
-{
-    public override IEnumerable<string> ConfigurationFiles { get; } = new[] {"Configuration.yaml"};
-    public TestConfiguration? Config { get; set; }
-    
-    public override void Configure(InjectorBuilder builder)
-    {
-        builder.Add<TestService>();
-        Config = builder.Configuration.GetSection("test").Get<TestConfiguration>();
-    }
-}
-
 public class InjectionModuleTest
 {
     [Fact]
@@ -130,6 +118,18 @@ public class InjectionModuleTest
 
         public override void Configure(InjectorBuilder builder)
         {
+        }
+    }
+    
+    public partial class TestModule : InjectionModule
+    {
+        public override IEnumerable<string> ConfigurationFiles { get; } = new[] {"Configuration.yaml"};
+        public TestConfiguration? Config { get; set; }
+    
+        public override void Configure(InjectorBuilder builder)
+        {
+            builder.Add<TestService>();
+            Config = builder.Configuration.GetSection("test").Get<TestConfiguration>();
         }
     }
 }

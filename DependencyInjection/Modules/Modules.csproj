@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>SamHowes.Extensions.DependencyInjection.Modules</PackageId>
-    <Version>0.0.7</Version>
+    <Version>0.0.8</Version>
     <Authors>Sam Howes</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
@@ -24,6 +24,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\..\Collections\Collections.csproj" />
     <ProjectReference Include="..\..\Configuration\Yaml\Yaml.csproj" />
   </ItemGroup>
 
